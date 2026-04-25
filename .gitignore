@@ -9,8 +9,5 @@ __pycache__/
 venv/
 .venv/
 
-# Generated artifacts
-outputs/
-
 # OS files
 .DS_Store
