@@ -1,0 +1,183 @@
+Data shape: (55996, 9)
+
+Columns: ['MinTemp', 'MaxTemp', 'Rainfall', 'Humidity', 'Pressure', 'WindSpeed', 'WindGustSpeed', 'Cloud', 'RainTomorrow']
+
+Missing values:
+ MinTemp          0
+MaxTemp          0
+Rainfall         0
+Humidity         0
+Pressure         0
+WindSpeed        0
+WindGustSpeed    0
+Cloud            0
+RainTomorrow     0
+dtype: int64
+
+Target column selected: RainTomorrow
+
+Downsampled to 15000 rows (stratified) to keep GridSearchCV fast.
+
+Feature correlation with target:
+Cloud            0.4693
+Humidity         0.4636
+Rainfall         0.0275
+MaxTemp          0.0140
+MinTemp          0.0108
+Pressure        -0.0017
+WindGustSpeed   -0.0029
+WindSpeed       -0.0154
+Name: RainTomorrow, dtype: float64
+
+Target distribution:
+RainTomorrow
+0    0.814
+1    0.186
+Name: ratio, dtype: float64
+
+Label noise applied: flipped 2714 of 15000 labels (18%).
+
+==================================================
+Training: Logistic Regression
+==================================================
+
+  Tuning Logistic Regression...
+  Best parameters for Logistic Regression:
+    - model__C: 10.0
+  Best CV ROC-AUC: 0.7280
+Accuracy:  0.7703
+Precision: 0.7417
+Recall:    0.3700
+F1-score:  0.4938
+ROC-AUC:   0.7092
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.78      0.94      0.85      2092
+           1       0.74      0.37      0.49       908
+
+    accuracy                           0.77      3000
+   macro avg       0.76      0.66      0.67      3000
+weighted avg       0.77      0.77      0.74      3000
+
+
+==================================================
+Training: Decision Tree
+==================================================
+
+  Tuning Decision Tree...
+  Best parameters for Decision Tree:
+    - model__max_depth: 3
+    - model__min_samples_leaf: 50
+  Best CV ROC-AUC: 0.7405
+Accuracy:  0.8087
+Precision: 0.8151
+Recall:    0.4758
+F1-score:  0.6008
+ROC-AUC:   0.7138
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.81      0.95      0.87      2092
+           1       0.82      0.48      0.60       908
+
+    accuracy                           0.81      3000
+   macro avg       0.81      0.71      0.74      3000
+weighted avg       0.81      0.81      0.79      3000
+
+
+==================================================
+Training: Random Forest
+==================================================
+
+  Tuning Random Forest...
+  Best parameters for Random Forest:
+    - model__max_depth: 8
+    - model__min_samples_leaf: 20
+    - model__n_estimators: 100
+  Best CV ROC-AUC: 0.7415
+Accuracy:  0.8093
+Precision: 0.8158
+Recall:    0.4780
+F1-score:  0.6028
+ROC-AUC:   0.7132
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.81      0.95      0.87      2092
+           1       0.82      0.48      0.60       908
+
+    accuracy                           0.81      3000
+   macro avg       0.81      0.72      0.74      3000
+weighted avg       0.81      0.81      0.79      3000
+
+
+==================================================
+Training: Gradient Boosting
+==================================================
+
+  Tuning Gradient Boosting...
+  Best parameters for Gradient Boosting:
+    - model__learning_rate: 0.1
+    - model__max_depth: 5
+    - model__n_estimators: 50
+  Best CV ROC-AUC: 0.7398
+Accuracy:  0.8067
+Precision: 0.8048
+Recall:    0.4769
+F1-score:  0.5989
+ROC-AUC:   0.7024
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.81      0.95      0.87      2092
+           1       0.80      0.48      0.60       908
+
+    accuracy                           0.81      3000
+   macro avg       0.81      0.71      0.74      3000
+weighted avg       0.81      0.81      0.79      3000
+
+
+==================================================
+Training: SVM (RBF)
+==================================================
+
+  Tuning SVM (RBF)...
+  Best parameters for SVM (RBF):
+    - model__C: 0.5
+    - model__gamma: scale
+  Best CV ROC-AUC: 0.7336
+Accuracy:  0.7840
+Precision: 0.7995
+Recall:    0.3822
+F1-score:  0.5171
+ROC-AUC:   0.7217
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.78      0.96      0.86      2092
+           1       0.80      0.38      0.52       908
+
+    accuracy                           0.78      3000
+   macro avg       0.79      0.67      0.69      3000
+weighted avg       0.79      0.78      0.76      3000
+
+
+Final Results Table:
+                 Model  ...                                        Best_Params
+4            SVM (RBF)  ...         {'model__C': 0.5, 'model__gamma': 'scale'}
+1        Decision Tree  ...  {'model__max_depth': 3, 'model__min_samples_le...
+2        Random Forest  ...  {'model__max_depth': 8, 'model__min_samples_le...
+0  Logistic Regression  ...                                 {'model__C': 10.0}
+3    Gradient Boosting  ...  {'model__learning_rate': 0.1, 'model__max_dept...
+
+[5 rows x 7 columns]
+
+Saved results to: outputs/model_results.csv
+
+All visualizations saved in 'outputs/' directory.
